@@ -1,0 +1,54 @@
+{% load static %}
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index: 3; width: 300px;" id="mySidebar">
+    <br>
+    <div class="w3-container">
+        <a href="#" onclick="w3_close()" class="w3-hide-large w3-padding w3-right w3-hover-grey w3-jumbo"><i class="fa fa-remove"></i></a>
+        <img src="{% static 'news_fetching/img/indian_express.png' %}" alt="Image" class="w3-round" style="max-width: 45%;"><br>
+        <h4 style="font-family: 'Courier New', Courier, monospace;"><b>INDIAN EXPRESS</b></h4>
+        <p class="w3-text-white w3-black w3-padding" style="font-family: 'Courier New', Courier, monospace;">Subscribe Now</p>
+    </div>
+
+    <div class="w3-bar-block">
+        <a href="{% url 'live' %}" onclick="w3_close()" 
+        class="w3-bar-item w3-button w3-padding w3-text-teal w3-text-bold"
+        style="font-family: 'Courier New', Courier, monospace;">
+        <i class="fa fa-newspaper-o fa-fw  w3-margin-right"></i>Latest News</a>
+
+
+        <a href="{% url 'trending' %}" id="btn-trending-topics"  
+        onclick="w3_close();showNews('trending-topics')" 
+        class="w3-bar-item w3-button w3-padding w3-text-teal w3-text-bold" 
+        style="font-family: 'Courier New', Courier, monospace;">
+        <i class="fa fa-line-chart fa-fw w3-margin-right"></i>Trending</a> 
+
+        <a href="{% url 'special' %}" onclick="w3_close()" 
+        class="w3-bar-item w3-button w3-padding w3-text-teal w3-text-bold"
+        style="font-family: 'Courier New', Courier, monospace;">
+        <i class="fa fa-file-text-o fa-fw w3-margin-right"></i>Special Reports</a>
+
+       <a href="{% url 'today' %}" onclick="w3_close()" 
+       class="w3-bar-item w3-button w3-padding w3-text-teal w3-text-bold"
+       style="font-family: 'Courier New', Courier, monospace;">
+       <i class="fa fa-star fa-fw w3-margin-right"></i>Today's Picks</a>
+         
+    </div>
+    <div class="w3-panel w3-large">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</nav>
+
+<script>    function w3_open() {
+    console.log("Opening sidebar...");  // Debug message
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}</script>

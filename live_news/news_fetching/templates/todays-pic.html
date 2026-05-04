@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <title>Today's Pic</title>
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+    </style>
+</head>
+<body class="w3-content w3-light-grey" style="max-width: 1600px;">
+     <!-- Sidebar/menu -->
+{% include 'headers.html' %}
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" 
+style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left: 300px;">
+    <div class="w3-container">
+      <h3 style="color: rgb(116, 8, 8); font-family: 'Courier New', Courier, monospace;" onclick="w3_open()"><b>Indian Express</b></h3>
+    </div>
+    <div class="w3-row-padding w3-content" style="max-width:1400px">
+    
+      <div class="w3-twothird">
+          {% for article in articles_bbc_news %}
+            <div>
+                <img src="{{article.urlToImage}}" alt="Notebook" style="width:100%">
+                <a href="{{article.url}}" style="text-decoration: none;"><h3><b>{{article.title}}</b></h3></a>
+                <p class="w3-text-bold" style="font-size: 12px; color: rgb(116, 8, 8);">Published at  {{article.publishedAt | date:"F j, Y" }}</p>
+                <div class="w3-justify">
+                  <p>{{article.description}}</p>
+                </div>
+                <p class="w3-right w3-text-red" style="font-size: 12px;"><b>Author : {{article.author}}</b></p>
+            </div> 
+         {% endfor %}
+      </div>
+     
+
+        <div class="w3-third w3-hide-small">
+          {% for article in articles_bbc_news %}
+          <div class="w3-container w3-light-grey">
+                <a href="{{article.url}}" style="text-decoration: none;"><h5><b>{{article.title}}</b></h5></a>
+                <p class="w3-justify" style="font-size: 14px;">{{article.content | truncatechars:200}}</p>
+                <p class="w3-right w3-text-red" style="font-size: 12px;"><b>{{article.author}}</b></p>
+          </div>
+          {% endfor %}
+        </div>
+
+
+    </div>     
+
+</div>
+
+
+</body>
+</html>
